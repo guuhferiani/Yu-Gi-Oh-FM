@@ -136,6 +136,8 @@ Este painel centraliza todas as sugestões aprovadas para manter a conversa ági
 - [x] **Neutralização do Bônus Planetário (+500 das Estrelas Guardiãs):** Patch aplicado e verificado tanto no executável PC quanto na ROM PS1 (`patch_guardian_stars.py`).
 - [x] **Rebalanceamento de Drops do Ato 2 (Torneio):** Rex, Weevil, Mai, Keith, Shadi, Bakura e Kaiba 1st com tabelas de arquétipos justas.
 - [x] **Injeção de Receitas na Descrição das Cartas:** 25 cartas-chave atualizadas com fórmulas de fusão legíveis e formatadas (`text.txt` e `generate_card_descriptions.py`).
-- [ ] **Rebalanceamento de Drops do Ato 3 (Templos e Guardiões):** Ocean Mage, Forest Mage, Mountain Mage, Desert Mage, Meadow Mage e High Mages.
+- [x] **Rebalanceamento de Drops do Ato 3 (Templos e Guardiões):** Ocean Mage, Forest Mage, Mountain Mage, Desert Mage, Meadow Mage, High Mages (Secmeton, Anubisius, Atenza, Martis, Kepura) e Jono/Teana 2nd.
+- [ ] **Rebalanceamento de Drops do Ato 4 (A Reta Final):** Labyrinth Mage, Sebek, Neku, Heishin 1st/2nd, Seto 2nd/3rd, DarkNite e Nitemare.
+
 
 
