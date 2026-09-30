@@ -111,8 +111,15 @@ Cada família possui uma escada de poder coerente (Básico -> Avançado -> Mestr
 2. **Tabela de Fusões:**
    * **Offset em WA_MRG:** `0xF8F802`
    * **Formato:** Matriz/listas com flags de tipo e ID de carta terminadas por delimitadores `0xFFFE`.
-3. **Decks e Drops dos Duelistas:**
-   * Localizados na faixa entre `0xF80000` e `0xF8E000` de `WA_MRG.MRG`.
+3. **Decks e Drops dos Duelistas em `WA_MRG.MRG`:**
+   * **Offset Base em WA_MRG:** `0xE99800` (Setor LBA 7475 / `0x1D33` de `WA_MRG.MRG`).
+   * **Estrutura por Duelista:** Cada um dos 39 duelistas (#00 Simon Muran até #38 Duel Master K) ocupa exatamente 3 setores RAW (6144 bytes):
+     * `+0x000` (1460 bytes): Deck e lógica de IA do duelista.
+     * `+0x5B4` (1460 bytes): Pool **S/A-POW** (730 inteiros uint16, onde o índice `card_id - 1` armazena o peso da carta; soma obrigatória = **2048**).
+     * `+0xB68` (1460 bytes): Pool **B/C/D** (730 inteiros uint16; soma = **2048**).
+     * `+0x111C` (1460 bytes): Pool **S/A-TEC** (730 inteiros uint16; soma = **2048**).
+     * `+0x16D0` (304 bytes): Preenchimento de alinhamento de setor.
+   * **Script de Injeção Automática:** [`tools/patch_rom_drops.py`](file:///c:/Users/Gustavo/Documents/Projetos%20Antigravity/Yu-Gi-Oh!%20Forbidden%20Memories/tools/patch_rom_drops.py) injeta todas as tabelas rebalanceadas (Atos 1 a 4) diretamente na ROM `.bin`, garantindo compatibilidade nativa com Android / DuckStation / consoles reais sem emulação modificada.
 
 ### Executável Nativo de PC (Yu-Gi-Oh! Recompiled)
 * **Localização:** [`pc_game/yfm-redecomp-v0.1.2/memories-pc.exe`](file:///c:/Users/Gustavo/Documents/Projetos%20Antigravity/Yu-Gi-Oh!%20Forbidden%20Memories/pc_game/yfm-redecomp-v0.1.2/memories-pc.exe)
@@ -149,7 +156,7 @@ Este painel centraliza todas as sugestões aprovadas para manter a conversa ági
 - [x] **Injeção de Receitas na Descrição das Cartas:** 25 cartas-chave atualizadas com fórmulas de fusão legíveis e formatadas (`text.txt` e `generate_card_descriptions.py`).
 - [x] **Rebalanceamento de Drops do Ato 3 (Templos e Guardiões):** Ocean Mage, Forest Mage, Mountain Mage, Desert Mage, Meadow Mage, High Mages (Secmeton, Anubisius, Atenza, Martis, Kepura) e Jono/Teana 2nd.
 - [x] **Rebalanceamento de Drops do Ato 4 (A Reta Final):** Labyrinth Mage, Sebek, Neku, Heishin 1st/2nd, Seto 2nd/3rd, DarkNite, Nitemare e Duel Master K.
-- [ ] **Port dos Drops para a ROM PS1/Android:** Injeção das tabelas de drop customizadas diretamente nos setores RAW de `WA_MRG.MRG` para funcionamento 100% autônomo no DuckStation Android sem mods externos.
+- [x] **Port dos Drops para a ROM PS1/Android:** Injeção das tabelas de drop customizadas diretamente nos setores RAW de `WA_MRG.MRG` para funcionamento 100% autônomo no DuckStation Android sem mods externos (`patch_rom_drops.py`).
 - [ ] **Configurações e Cheats para DuckStation Android:** Arquivos `.ini` e códigos de trapaça testados para Multi-Drop (5 cartas) no Android.
 - [ ] **Ajuste Fino de Mão Inicial dos Chefes (IA):** Evitar que chefes da reta final iniciem duelos com Gate Guardian ou Blue-Eyes Ultimate logo no turno 1 antes do jogador poder agir.
 

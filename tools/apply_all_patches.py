@@ -17,25 +17,29 @@ def main():
         sys.exit(1)
 
     if not os.path.exists(ROM_MOD):
-        print(f"\n[1/5] Criando cópia de trabalho: {ROM_MOD}...")
+        print(f"\n[1/6] Criando cópia de trabalho: {ROM_MOD}...")
         shutil.copyfile(ROM_CLEAN, ROM_MOD)
     else:
-        print(f"\n[1/5] ROM de trabalho detectada: {ROM_MOD}")
+        print(f"\n[1/6] ROM de trabalho detectada: {ROM_MOD}")
 
-    print("\n[2/5] Aplicando custos justos de Star Chips...")
+    print("\n[2/6] Aplicando custos justos de Star Chips...")
     import patch_star_chips
-    patch_star_chips.main()
+    patch_star_chips.apply_patch()
 
-    print("\n[3/5] Injetando 39 novas fusões balanceadas na ROM...")
+    print("\n[3/6] Injetando 39 novas fusões balanceadas na ROM...")
     import inject_fusions
-    inject_fusions.main()
+    inject_fusions.inject_fusions()
 
-    print("\n[4/5] Neutralizando bônus de Estrelas Guardiãs (+-500)...")
+    print("\n[4/6] Neutralizando bônus de Estrelas Guardiãs (+-500)...")
     import patch_guardian_stars
     patch_guardian_stars.patch_pc_executable()
     patch_guardian_stars.patch_ps1_rom()
 
-    print("\n[5/5] Gerando descrições das cartas com fórmulas de fusão...")
+    print("\n[5/6] Gravando tabelas de drop rebalanceadas diretamente na ROM...")
+    import patch_rom_drops
+    patch_rom_drops.patch_all_drops()
+
+    print("\n[6/6] Gerando descrições das cartas com fórmulas de fusão...")
     import generate_card_descriptions
     generate_card_descriptions.generate_text_listing()
 

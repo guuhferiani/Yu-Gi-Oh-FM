@@ -66,7 +66,16 @@ def inject_fusions():
     with open(MANIFEST_PATH, "r", encoding="utf-8") as f:
         manifest = json.load(f)
 
-    manifest["fusions"] = EXPANDED_FUSIONS
+    # Converter nomes para IDs numéricos para evitar divergência de tradução (PT-BR)
+    from card_id_map import CARD_NAME_TO_ID
+    numeric_fusions = []
+    for fus in EXPANDED_FUSIONS:
+        c1 = CARD_NAME_TO_ID.get(fus["with"][0], fus["with"][0])
+        c2 = CARD_NAME_TO_ID.get(fus["with"][1], fus["with"][1])
+        res = CARD_NAME_TO_ID.get(fus["result"], fus["result"])
+        numeric_fusions.append({"with": [c1, c2], "result": res})
+
+    manifest["fusions"] = numeric_fusions
 
     with open(MANIFEST_PATH, "w", encoding="utf-8") as f:
         json.dump(manifest, f, indent=4, ensure_ascii=False)
