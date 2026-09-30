@@ -1,0 +1,143 @@
+#ifndef MEMORIES_PC_MODS_H
+#define MEMORIES_PC_MODS_H
+/* The mod system: what the port itself calls. Mods are directories, not
+ * built-in code -- see modapi.h for what one contains and notes/modding.md
+ * for how one is written. They are found beside the executable (`mods/`,
+ * where the release's own mods live) and in the player's mods directory
+ * (paths.h), which is where a player installs someone else's. Whether a mod
+ * is applied is a setting, `mod.<id>`, saved with the rest of them. */
+
+#define MODS_MAX 256
+#include <stddef.h>
+#include <stdint.h>
+#include "mod_types.h"
+struct JsonValue;
+
+/* Find every mod and apply the ones the settings say are applied. Safe to
+ * call again (settings reload): the directories are only scanned once. */
+void Mods_Load(void);
+/* The texture pack loader a "textures" mod goes through (src/pc/render/texture_pack.h),
+ * `part` answering an entry's "setting" from the mod's settings; without
+ * one, such a mod notes that this build has no texture packs. */
+void Mods_SetTexturePack(int (*load)(const char *directory, unsigned rank,
+                                     int (*part)(const char *setting, void *context), void *context,
+                                     char *problems, size_t size),
+                         void (*unload)(void));
+/* The audio replacement an "audio" mod goes through (src/pc/audio/replace.h):
+ * `load` decodes a mod's files and returns how many it added, or -1 when the
+ * object is malformed, with the first failure in `error`; `unload` drops
+ * them. Without one, such a mod notes that this build has no audio. */
+void Mods_SetAudio(int (*load)(int mod, const char *id, const char *directory, const struct JsonValue *audio,
+                               char *error, size_t size),
+                   void (*unload)(int mod));
+void Mods_Shutdown(void);
+
+int Mods_Count(void);
+const char *Mods_Id(int mod);
+const char *Mods_Name(int mod);
+/* Empty while all is well, else why this mod did not load. */
+const char *Mods_Status(int mod);
+/* Whether the player has this mod applied. A mod that wants a restart reads
+ * back as applied as soon as the player applies it, because that is what the
+ * settings now say; it is the next launch that puts it in place. */
+int Mods_Enabled(int mod);
+/* Whether changing this mod requires a fresh game process. */
+int Mods_RequiresRestart(int mod);
+/* Apply or remove a mod: loads its code the first time it is applied,
+ * turns its data overrides on or off, and records the setting. The caller
+ * saves the settings (the mods window reverts the change if that fails). */
+void Mods_SetEnabled(int mod, int enabled);
+
+/* The "cards" array of every applied mod, with the directory its images are
+ * named from, in the order the mods were found, for src/pc/cards (json.h
+ * reads them). A data mod needs no code for them. */
+struct JsonValue;
+void Mods_VisitCards(void (*visit)(const char *id, const char *directory, const struct JsonValue *cards, void *context),
+                     void *context);
+/* The mods applied at startup, in the order they were loaded: where two
+ * of them set the same thing, the later one wins. */
+int Mods_LoadedCount(void);
+int Mods_Loaded(int index);
+/* One of a mod's settings (`mod.<id>.<key>`, or MEMORIES_MOD_<ID>_<KEY> for
+ * the run), as a code mod's host->setting reads it. */
+int Mods_Setting(const char *id, const char *key, int fallback);
+/* Say why a mod is not quite what it asked for: on stderr and beside it in
+ * the Mods window. */
+void Mods_Note(const char *id, const char *format, ...);
+
+/* Called once the game's frame is on its way to the GPU (libgpu's GsDrawOt),
+ * which is where an extra pass can draw over the finished picture. */
+void Mods_DrawFrame(void);
+/* The applied mods' overlays (MemoriesMod.overlay), drawn with the port's
+ * menu text; the rectangle they covered, or zeros. Their signature changes
+ * whenever one of them would draw something else (`frame` for a mod that
+ * gives none). */
+struct MenuCanvas;
+void Mods_DrawOverlay(struct MenuCanvas *canvas, int scale,
+                      void (*text)(struct MenuCanvas *, int, int, const char *, uint32_t, int),
+                      int (*width)(const char *, int), int *x, int *y, int *w, int *h);
+unsigned Mods_OverlaySignature(unsigned frame);
+/* Drop everything cached from the running game: a resumed save state is
+ * another game. */
+void Mods_Reset(void);
+
+/* Data overrides, from the drive model (libds.c): replace the 2048 bytes of
+ * user data a sector delivers. Interrupt context, so this reads its tables
+ * and copies; nothing is allocated or opened here. Returns nonzero when the
+ * sector was changed. */
+int Mods_DiscSector(int lba, void *user_data);
+/* Effective named-file metadata, virtual backing and texture provenance.
+ * These lookups allocate nothing and are safe in the drive callback. */
+int Mods_DiscFileInfo(int retail_lba, int *lba, unsigned *size);
+int Mods_DiscSource(int lba, int *physical_lba);
+int Mods_DiscOrigin(int lba);
+unsigned Mods_DiscSignature(void);
+
+/* Manager metadata and configuration. Borrowed strings live until exit. */
+const struct JsonValue *Mods_Manifest(int mod);
+const char *Mods_Metadata(int mod, const char *key);
+const char *Mods_Directory(int mod);
+/* Where players put new mods (MEMORIES_MODS_DIR, else the user mods
+ * folder), created if missing; 0 on success. */
+int Mods_InstallDirectory(char *out, size_t size);
+const char *Mods_Origin(int mod);
+int Mods_Active(int mod);
+int Mods_Failed(int mod);
+int Mods_ConflictText(int mod, char *out, size_t size);
+int Mods_OptionCount(int mod);
+const struct JsonValue *Mods_Option(int mod, int option);
+int Mods_OptionValue(int mod, int option);
+int Mods_OptionValid(int mod, int option, int value);
+/* A key a mod's settings may use (mod.<id>.<key>): letters, digits, '_' and
+ * '-', and not one the manager keeps for itself ("order"). */
+int Mods_SettingKeyValid(const char *key);
+int Mods_OptionSet(int mod, int option, int value);
+/* Validate the whole proposed set, before saving/changing anything. */
+int Mods_CheckManifest(int mod, char *error, size_t size);
+int Mods_Compatible(int mod, const int *enabled, char *error, size_t size);
+/* The load order of the enabled mods, or -1 on a cycle; order[] then holds
+ * the mods that could still be placed, ended by -1. */
+int Mods_Order(const int *enabled, int *order, char *error, size_t size);
+/* A mod whose requirement is in `enabled` but only goes in place at the next
+ * launch (it asks for a restart, or waits on one that does) cannot go live
+ * before it either: the requirement it waits on, or -1 when there is none. */
+int Mods_WaitsForRestart(int mod, const int *enabled);
+int Mods_ProfileValue(const char *name, const char *key, int fallback);
+int Mods_Validate(const int *enabled, char *error, size_t size);
+int Mods_Apply(const int *enabled, char *error, size_t size);
+int Mods_ProfileSave(const char *name);
+int Mods_ProfileRead(const char *name, int *enabled);
+void Mods_SetCardSignature(unsigned signature);
+unsigned Mods_CardSignature(void);
+void Mods_SetCardResolver(int (*resolve)(const char *));
+void Mods_Dispatch(MemoriesModEvent *event);
+int Mods_Notify(unsigned type, int a, int b, int c);
+unsigned Mods_Sequence(int mod);
+int Mods_RuntimeOption(int mod, int option);
+/* One of an applied mod's settings changed (Mods_OptionSet): its texture
+ * pack, whose parts may follow the setting, is loaded again. */
+void Mods_OptionChanged(int mod, int option);
+unsigned Mods_CodeHash(int mod);
+unsigned Mods_Signature(void);
+int Mods_DamageLife(int side, int life, int damage, int kind);
+#endif

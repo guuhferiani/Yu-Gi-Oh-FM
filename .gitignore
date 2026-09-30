@@ -1,0 +1,21 @@
+# ROMs e Imagens de Disco (Arquivos grandes > 100MB e dados proprietários)
+rom/*.bin
+rom/*.iso
+pc_game/**/game/*.bin
+pc_game/**/game/*.iso
+
+# Saves, Memory Cards e Save States
+*.sav
+*.srm
+*.state*
+pc_game/**/saves/
+pc_game/**/states/
+
+# Arquivos temporários, logs e cache
+scratch/
+*.log
+*.dmp
+pc_game/**/reports/
+__pycache__/
+*.pyc
+.system_generated/

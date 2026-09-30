@@ -1,0 +1,176 @@
+@bank descriptions
+
+[D101]  # #001 Blue-eyes White Dragon
+FUSOES OLHOS AZUIS:
++ Olhos Azuis x3 = D. Supremo
++ Maquina = Dragao Cibernetico
++ Equipa c/ Tesouro do Dragao
+{end}
+
+[D104]  # #004 Baby Dragon
+FUSOES DRAGAO BEBE:
++ Mago do Tempo = D. Milenar
++ D. Zumbi = Maldicao Dragao
++ Agua = Serpente Marinha
+{end}
+
+[D110]  # #016 Time Wizard
+FUSOES MAGO DO TEMPO:
++ Dragao Bebe = Dragao Milenar
++ Guerreiro = Espadachim Chama
++ Doma = Mago do Caos
+{end}
+
+[D116]  # #022 Summoned Skull
+FUSOES CAVEIRA INVOCADA:
++ D. Olhos Vermelhos = B. Skull Dragon
++ Guerreiro = Cavaleiro Zumbi
++ Magia = Demonio do Abismo
+{end}
+
+[D11A]  # #026 Battle Ox
+FUSOES FERA / GUERREIRO:
++ Dragao = Dragao Boi Furioso
++ Zumbi = Boi Espectral Zumbi
++ Maquina = Ciborgue Minotauro
+{end}
+
+[D11F]  # #031 Koumori Dragon
+FUSOES DRAGAO TREVAS:
++ Trovao = Dragao do Trovao
++ Trovao (Forte) = D. 2 Cabecas
++ Zumbi = Dragao Zumbi
+{end}
+
+[D120]  # #032 Two-headed King Rex
+FUSOES DINOSSAURO:
++ Dragao = Dragao Braquiossauro
++ Maquina = Ciborgue T-Rex
++ Equipa c/ Presas de Fera
+{end}
+
+[D123]  # #035 Dark Magician
+FUSOES MAGO NEGRO:
++ Dragao = Cavaleiro Magico
++ Trevas = Fantasma Magico
++ Fogo = Mago da Chama Solar
+{end}
+
+[D132]  # #050 Basic Insect
+FUSOES INSETO:
++ Maquina = Besouro Canhao
++ Kuwagata = Kwagar Hercules
++ Planta = Louva-a-Deus Floresta
+{end}
+
+[D134]  # #052 Hercules Beetle
+FUSOES BESOURO HERCULES:
++ Maquina = Hercules Mecanico
++ Fera = Quimera da Floresta
++ Equipa c/ Canhao Laser
+{end}
+
+[D13E]  # #062 Harpie Lady
+FUSOES HARPIA:
++ Dragao = Dragao Mascote Harpia
++ Besta Alada = Aguia Suprema
++ Equipa c/ Escudo Cibernetico
+{end}
+
+[D13F]  # #063 Harpie Lady Sisters
+FUSOES IRMAS DE HARPIA:
++ Dragao = Dragao Mascote Harpia
++ Montanha = Bônus de Campo
++ Equipa c/ Vento Favoravel
+{end}
+
+[D145]  # #069 Water Omotics
+FUSOES AGUA / MARES:
++ Dragao = Serpente dos Picos
++ Trovao = Tubarao Eletrico
++ Planta = Alga Gigante
+{end}
+
+[D14F]  # #079 Megazowler
+FUSOES DINOSSAURO DEFENSIVO:
++ Dragao = Dragao Rastejante
++ Zumbi = Fera Fossil Zumbi
++ Equipa c/ Ermos (Wasteland)
+{end}
+
+[D151]  # #081 Crawling Dragon 2
+FUSOES DRAGAO RASTEJANTE:
++ Trovao = Dragao 2 Cabecas
++ Fogo = Dragao de Fogo Alado
++ Zumbi = Dragao Zumbi
+{end}
+
+[D152]  # #082 Red-eyes B. Dragon
+FUSOES OLHOS VERMELHOS:
++ D. Meteoro = D. Meteoro Negro
++ Caveira Invocada = B. Skull
++ Maquina = Dragao Metalico
+{end}
+
+[D154]  # #084 Reaper of the Cards
+FUSOES CEIFADOR DE CARTAS:
++ Guerreiro = Cavaleiro Cadáver
++ Mago = Mago do Oculto
++ Trevas = Lorde do Abismo
+{end}
+
+[D15D]  # #093 Zanki
+FUSOES GUERREIRO ZANKI:
++ Zumbi = Zumbi Blindado
++ Maquina = Soldado Cibernetico
++ Fogo = Espadachim da Chama
+{end}
+
+[D172]  # #114 White Magical Hat
+FUSOES MAGO DA LUZ:
++ Trevas = Mago Fantasma
++ Fogo = Guerreiro da Chama
++ Fada = Rainha Mágica da Luz
+{end}
+
+[D229]  # #297 Cyber Soldier of Darkworld
+FUSOES SOLDADO CIBERNETICO:
++ Guerreiro = Giga-Tech Wolf
++ Dragao = Dragao Metalico
++ Equipa c/ Fabrica de Conversao
+{end}
+
+[D284]  # #388 Pendulum Machine
+FUSOES MAQUINA PENDULO:
++ Zumbi = Maquina Cadáverica
++ Guerreiro = Rei das Maquinas
++ Equipa c/ 7 Completo
+{end}
+
+[D297]  # #407 Machine King
+FUSOES REI DAS MAQUINAS:
++ Guerreiro = Ciborgue Mestre
++ Dragao = Dragao de Aco Supremo
++ Equipa c/ Metalmorfo
+{end}
+
+[D29C]  # #412 Giga-tech Wolf
+FUSOES LOBO CIBERNETICO:
++ Guerreiro = Cavaleiro Mecanico
++ Dragao = Dragao Cibernetico
++ Zumbi = Lobo Metalico Fantasma
+{end}
+
+[D2D2]  # #466 Skull Red Bird
+FUSOES BESTA ALADA:
++ Harpia = Aguia Suprema de Voo
++ Dragao = Dragao Alado Vermelho
++ Equipa c/ Vento Favoravel
+{end}
+
+[D2E0]  # #480 Kuwagata Alpha
+FUSOES INSETO KUWAGATA:
++ Besouro Hercules = Kwagar Hercules
++ Maquina = Besouro Canhao
++ Equipa c/ Floresta (Forest)
+{end}
