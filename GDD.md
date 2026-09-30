@@ -56,7 +56,18 @@
 | **Ato 1: Egito Antigo (Início)** | Simon Muran, Teana, Jono, Seto 1st | 400 – 1200 | Primeiras fusões básicas, cartas de suporte iniciais |
 | **Ato 2: Torneio no Japão** | Rex, Weevil, Mai, Bandit Keith, Shadi, Yami Bakura | 1200 – 2000 | Desbloqueio dos Arquétipos: Dinossauros, Insetos, Guerreiros/Harpia, Máquinas |
 | **Ato 3: Retorno e os Templos** | Guardiões (Oceano, Deserto, Prado, Montanha, Floresta) | 2000 – 2600 | Desbloqueio das cartas de Campo elementais e monstros de topo de cada elemento |
-| **Ato 4: O Clímax** | Labyrinth Mage, Sebek, Neku, Heishin, Seto 3rd, DarkNite | 2600 – 3500 | Monstros supremos, magias lendárias (*Raigeki*, *Megamorfo*) sem depender de sorte absurda |
+| **Ato 4: O Clímax** | Labyrinth Mage, Sebek, Neku, Heishin 1st/2nd, Seto 2nd/3rd, DarkNite, Nitemare, Duel Master K | 2600 – 4500 | Monstros supremos (*Blue-Eyes Ultimate*, *Gate Guardian*, *Black Skull Dragon*, *Cosmo Queen*, *Zera the Mant*) e magias lendárias (*Raigeki*, *Megamorfo*, *Castelo Brilhante*) sem depender de sorte absurda |
+
+#### Detalhamento das Recompensas do Ato 4 (Reta Final):
+* **Labyrinth Mage:** *Labyrinth Wall* (DEF 3000), *Millennium Shield* (DEF 3000), *Jirai Gumo* (2200), *Shadow Ghoul*, *Dungeon Worm*, *Swords of Revealing Light*, *Acid Trap Hole*, *Widespread Ruin*.
+* **Seto 2nd:** *Blue-Eyes White Dragon* (3000), *Twin-Headed Thunder Dragon*, *Battle Ox*, *Kaiser Dragon*, *Crush Card*, *Megamorph*, *Dragon Treasure*.
+* **Guardião Sebek:** *Zera the Mant* (2800), *Metalzoa* (3000), *Dungeon Worm*, *Machine King*, *Metalmorph*, *Megamorph*, *Bright Castle*.
+* **Guardião Neku:** *Cosmo Queen* (2900), *Skull Knight* (2650), *Sanga of the Thunder* (2600), *Suijin* (2500), *Pumpking*, *Raigeki*, *Bright Castle*, *Acid Trap Hole*.
+* **Heishin (1st & 2nd):** *Gate Guardian* (3750), *Black Skull Dragon* (3200), *Red-Eyes Black Metal Dragon* (2800), *Sanga/Kazejin/Suijin*, *Raigeki*, *Megamorph*, *Bright Castle*.
+* **Seto 3rd:** *Blue-Eyes Ultimate Dragon* (4500), *Gate Guardian* (3750), *Black Skull Dragon* (3200), *Blue-Eyes White Dragon* (3000), *Megamorph*, *Raigeki*, *Dragon Treasure*.
+* **DarkNite:** *Magician of Black Chaos* (2800), *Chakra* (2450), *Red-Eyes Black Metal Dragon*, *Zera the Mant*, *Gate Guardian*, *Raigeki*, *Megamorph*, *Swords of Revealing Light*.
+* **Nitemare (Chefe Supremo):** *Blue-Eyes Ultimate Dragon* (4500), *Gate Guardian* (3750), *Black Skull Dragon* (3200), *Cosmo Queen* (2900), *Raigeki*, *Megamorph*, *Acid Trap Hole*.
+* **Duel Master K (Treinamento):** *Blue-Eyes White Dragon*, *Red-Eyes B. Dragon*, *Summoned Skull*, *Meteor Dragon*, *Time Wizard*, *Raigeki*, *Megamorph*, *Swords*.
 
 ---
 
@@ -137,7 +148,10 @@ Este painel centraliza todas as sugestões aprovadas para manter a conversa ági
 - [x] **Rebalanceamento de Drops do Ato 2 (Torneio):** Rex, Weevil, Mai, Keith, Shadi, Bakura e Kaiba 1st com tabelas de arquétipos justas.
 - [x] **Injeção de Receitas na Descrição das Cartas:** 25 cartas-chave atualizadas com fórmulas de fusão legíveis e formatadas (`text.txt` e `generate_card_descriptions.py`).
 - [x] **Rebalanceamento de Drops do Ato 3 (Templos e Guardiões):** Ocean Mage, Forest Mage, Mountain Mage, Desert Mage, Meadow Mage, High Mages (Secmeton, Anubisius, Atenza, Martis, Kepura) e Jono/Teana 2nd.
-- [ ] **Rebalanceamento de Drops do Ato 4 (A Reta Final):** Labyrinth Mage, Sebek, Neku, Heishin 1st/2nd, Seto 2nd/3rd, DarkNite e Nitemare.
+- [x] **Rebalanceamento de Drops do Ato 4 (A Reta Final):** Labyrinth Mage, Sebek, Neku, Heishin 1st/2nd, Seto 2nd/3rd, DarkNite, Nitemare e Duel Master K.
+- [ ] **Port dos Drops para a ROM PS1/Android:** Injeção das tabelas de drop customizadas diretamente nos setores RAW de `WA_MRG.MRG` para funcionamento 100% autônomo no DuckStation Android sem mods externos.
+- [ ] **Configurações e Cheats para DuckStation Android:** Arquivos `.ini` e códigos de trapaça testados para Multi-Drop (5 cartas) no Android.
+- [ ] **Ajuste Fino de Mão Inicial dos Chefes (IA):** Evitar que chefes da reta final iniciem duelos com Gate Guardian ou Blue-Eyes Ultimate logo no turno 1 antes do jogador poder agir.
 
 
 
